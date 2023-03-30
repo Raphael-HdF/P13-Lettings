@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.core.validators import MaxValueValidator, MinLengthValidator
-from django.contrib.auth.models import User
 
 
 class Address(models.Model):
@@ -27,7 +27,7 @@ class Letting(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
     favorite_city = models.CharField(max_length=64, blank=True)
 
     def __str__(self):
