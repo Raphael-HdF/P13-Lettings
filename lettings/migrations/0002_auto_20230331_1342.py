@@ -33,6 +33,9 @@ def copy_data(apps, schema_editor):
     models_name = {obj.__name__ for obj in apps.get_app_config(
         destination_app).models.values()}
 
+    if not hasattr(apps.app_configs, source_app):
+        return
+
     for model_to_copy in models_name:
 
         SourceModel = apps.get_model(source_app, model_to_copy)
