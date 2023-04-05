@@ -1,0 +1,18 @@
+stages:
+  - Testing
+
+image: "python:3.10.6-alpine"
+Testing branches:
+  stage: Testing
+  variables:
+    DEBUG: "True"
+    ALLOWED_HOSTS: "0.0.0.0"
+    DBNAME: "db.sqlite3"
+    DBENGINE: "django.db.backends.sqlite3"
+    SECRET_KEY: "test_secret"
+  before_script:
+    - pip install -r requirements.txt
+  script:
+    - run manage.py test
+    - run flake8
+
