@@ -13,6 +13,6 @@ Testing branches:
   before_script:
     - pip install -r requirements.txt
   script:
-    - run manage.py test
-    - run flake8
+    - python manage.py test
+    - flake8
 
